@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import type { PartialTranslations } from '../i18n/types';
 import type { CustomStyle } from '../types/custom-style';
 
-interface CheckoutProviderConfig {
+export interface CheckoutProviderConfig {
   /**
    * The environment in which you want your payment to go through
    */

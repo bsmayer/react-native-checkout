@@ -13,14 +13,14 @@ import { useTranslation } from 'react-i18next';
 /**
  * The response in case of a successful token creation
  */
-interface TokenDetails {
+export interface TokenDetails {
   token: string;
   expiresOn: string;
   bin: string;
   last4: string;
 }
 
-interface PaymentFormProps {
+export interface PaymentFormProps {
   onSubmit: {
     /**
      * Function called when a token is generated successfully
