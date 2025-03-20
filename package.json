@@ -68,7 +68,9 @@
     "@evilmartians/lefthook": "^1.5.0",
     "@react-native/eslint-config": "^0.73.1",
     "@release-it/conventional-changelog": "^9.0.2",
+    "@testing-library/react-native": "^13.2.0",
     "@types/jest": "^29.5.5",
+    "@types/lodash": "^4.17.16",
     "@types/react": "^18.2.44",
     "commitlint": "^19.6.1",
     "del-cli": "^5.1.0",
@@ -80,6 +82,7 @@
     "react": "18.3.1",
     "react-native": "0.76.7",
     "react-native-builder-bob": "^0.38.0",
+    "react-test-renderer": "18.3.1",
     "release-it": "^17.10.0",
     "typescript": "^5.2.2"
   },
@@ -104,7 +107,13 @@
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ]
+    ],
+    "rules": {
+      "subject-case": [
+        0,
+        "always"
+      ]
+    }
   },
   "release-it": {
     "git": {
@@ -133,6 +142,8 @@
     ],
     "rules": {
       "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/no-shadow": "off",
+      "react-native/no-inline-styles": "off",
       "prettier/prettier": [
         "error",
         {
@@ -154,7 +165,8 @@
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "es5",
-    "useTabs": false
+    "useTabs": false,
+    "printWidth": 120
   },
   "react-native-builder-bob": {
     "source": "src",
@@ -185,5 +197,13 @@
     "languages": "js",
     "type": "library",
     "version": "0.48.5"
+  },
+  "dependencies": {
+    "axios": "^1.8.3",
+    "i18next": "^24.2.3",
+    "lodash": "^4.17.21",
+    "react-hook-form": "^7.54.2",
+    "react-i18next": "^15.4.1",
+    "tinymask": "^1.0.2"
   }
 }
