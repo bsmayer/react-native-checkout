@@ -145,8 +145,11 @@ export function PaymentForm({ onSubmit }: PaymentFormProps): React.ReactElement 
     <View style={styles.container}>
       {/* Name */}
       <FormTextInput
-        control={control}
+        inputTestID="cardholderName"
+        labelTestID="cardholderNameLabel"
+        validationMessageTestID="cardholderNameValidation"
         name="cardholderName"
+        control={control}
         label={t('paymentForm.labels.name')}
         placeholder="Tony Stark"
         autoCorrect={false}
@@ -167,8 +170,9 @@ export function PaymentForm({ onSubmit }: PaymentFormProps): React.ReactElement 
 
       {/* Number */}
       <FormTextInput
-        control={control}
+        inputTestID="cardNumber"
         name="cardNumber"
+        control={control}
         label={t('paymentForm.labels.number')}
         placeholder="1234 1234 1234 1234"
         mask="9999 9999 9999 9999"
@@ -183,7 +187,7 @@ export function PaymentForm({ onSubmit }: PaymentFormProps): React.ReactElement 
           required: t('paymentForm.formValidations.number.required'),
           minLength: {
             value: 19,
-            message: t('paymentForm.formValidations.securityCode.minLength', {
+            message: t('paymentForm.formValidations.number.minLength', {
               minLength: 19,
             }),
           },
@@ -194,8 +198,9 @@ export function PaymentForm({ onSubmit }: PaymentFormProps): React.ReactElement 
       <View style={styles.horizontalContainer}>
         {/* Expiry date */}
         <FormTextInput
-          control={control}
+          inputTestID="expiryDate"
           name="expiryDate"
+          control={control}
           label={t('paymentForm.labels.expiryDate')}
           placeholder="MM/YY"
           mask="99/99"
@@ -214,8 +219,9 @@ export function PaymentForm({ onSubmit }: PaymentFormProps): React.ReactElement 
 
         {/* CVV */}
         <FormTextInput
-          control={control}
+          inputTestID="cvv"
           name="cvv"
+          control={control}
           label={t('paymentForm.labels.securityCode')}
           placeholder="CVV"
           autoCorrect={false}
@@ -241,6 +247,8 @@ export function PaymentForm({ onSubmit }: PaymentFormProps): React.ReactElement 
 
       {/* Submit button */}
       <FormButton
+        containerTestID="submit"
+        titleTestID="submitButtonTitle"
         title={t('paymentForm.buttons.pay')}
         buttonContainerStyle={config.style?.buttonContainerStyle}
         buttonTitleStyle={config.style?.buttonTitleStyle}

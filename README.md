@@ -6,28 +6,29 @@ Checkout.com React Native library
 
 ```sh
 npm install react-native-checkout
+
+yarn add react-native-checkout
 ```
 
 ## Usage
 
+```tsx
+import { CheckoutProvider, PaymentForm } from 'react-native-checkout';
 
-```js
-import { multiply } from 'react-native-checkout';
-
-// ...
-
-const result = await multiply(3, 7);
+export function App() {
+  return (
+    <CheckoutProvider environment="sandbox" clientId="your_client_id">
+      <PaymentForm
+        onSubmit={{
+          onSuccess: (token) => {
+            console.log(token);
+          },
+          onError: (err: string) => {
+            console.log(err);
+          },
+        }}
+      />
+    </CheckoutProvider>
+  );
+}
 ```
-
-
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
-
-## License
-
-MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)

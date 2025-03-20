@@ -23,6 +23,9 @@ interface FormTextInputProps extends Omit<TextInputProps, 'style'> {
   inputStyle?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
   validationMessageStyle?: StyleProp<TextStyle>;
+  inputTestID?: string;
+  labelTestID?: string;
+  validationMessageTestID?: string;
 }
 
 /**
@@ -39,6 +42,9 @@ export function FormTextInput({
   inputStyle,
   labelStyle,
   validationMessageStyle,
+  inputTestID,
+  labelTestID,
+  validationMessageTestID,
   ...rest
 }: FormTextInputProps): React.ReactElement {
   /**
@@ -93,7 +99,9 @@ export function FormTextInput({
   return (
     <View style={containerStyle}>
       {/* Label */}
-      <Text style={[styles.labelDefaultStyle, labelStyle]}>{label}</Text>
+      <Text testID={labelTestID} style={[styles.labelDefaultStyle, labelStyle]}>
+        {label}
+      </Text>
 
       {/* Text Input */}
       <Controller
@@ -107,12 +115,15 @@ export function FormTextInput({
               onBlur={field.onBlur}
               onChangeText={(value) => handleOnChange(value, field.onChange)}
               value={field.value}
+              testID={inputTestID}
               {...rest}
             />
 
             {/* Error message */}
             {!!fieldState.error?.message && (
-              <Text style={[styles.errorDefaultStyle, validationMessageStyle]}>{fieldState.error?.message}</Text>
+              <Text testID={validationMessageTestID} style={[styles.errorDefaultStyle, validationMessageStyle]}>
+                {fieldState.error?.message}
+              </Text>
             )}
           </>
         )}

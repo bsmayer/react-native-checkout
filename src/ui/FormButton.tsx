@@ -6,6 +6,8 @@ interface FormButtonProps {
   onPress: () => void;
   buttonContainerStyle?: StyleProp<ViewStyle>;
   buttonTitleStyle?: StyleProp<TextStyle>;
+  containerTestID?: string;
+  titleTestID?: string;
 }
 
 /**
@@ -16,10 +18,19 @@ export function FormButton({
   onPress,
   buttonContainerStyle,
   buttonTitleStyle,
+  containerTestID,
+  titleTestID,
 }: FormButtonProps): React.ReactElement {
   return (
-    <TouchableOpacity style={[styles.defaultButtonStyle, buttonContainerStyle]} onPress={onPress} activeOpacity={0.7}>
-      <Text style={[styles.defaultButtonTitle, buttonTitleStyle]}>{title}</Text>
+    <TouchableOpacity
+      testID={containerTestID}
+      style={[styles.defaultButtonStyle, buttonContainerStyle]}
+      onPress={onPress}
+      activeOpacity={0.7}
+    >
+      <Text testID={titleTestID} style={[styles.defaultButtonTitle, buttonTitleStyle]}>
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 }
